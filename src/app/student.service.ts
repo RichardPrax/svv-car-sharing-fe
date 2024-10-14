@@ -8,7 +8,7 @@ import { Student } from './student';
 })
 export class StudentService {
 
-  private apiUrl = 'http://localhost:8080/api/users';
+  private apiUrl = 'https://svv-car-sharing-api.vercel.app/students';
 
   constructor(private http: HttpClient) { }
 
