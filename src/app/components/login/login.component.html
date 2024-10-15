@@ -1,0 +1,22 @@
+<div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div class="card p-4" style="width: 300px;">
+      <h3 class="text-center mb-4">SVV Herren 1</h3>
+      <h5 class="text-center mb-4">Car-Sharing</h5>
+      <form [formGroup]="loginForm" (ngSubmit)="authenticate()">
+        <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          <input type="text" class="form-control" id="username" formControlName="username" placeholder="Enter username">
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <div class="input-group">
+            <input [type]="passwordFieldType" class="form-control themed-input" id="password" formControlName="password" placeholder="Passwort">
+            <button type="button" class="btn btn-outline-secondary" (click)="togglePasswordVisibility()">
+              <i [class]="passwordFieldType === 'password' ? 'fa fa-eye' : 'fa fa-eye-slash'"></i>
+            </button>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary w-100" [disabled]="loginForm.invalid">Login</button>
+      </form>
+    </div>
+</div>

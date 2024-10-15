@@ -1,0 +1,35 @@
+.navbar {
+    background-color: var(--light-grey);
+    min-height: 75px;
+  
+    .navbar-brand {
+      color: var(--primary-color);
+      font-size: x-large;
+    }
+  
+    .navbar-nav {
+      display: flex;
+      justify-content: center;
+  
+      .nav-link {
+        color: var(--text-color);
+        margin: 0 15px;
+  
+        &:hover {
+          color: var(--primary-color);
+        }
+      }
+    }
+    .btn-success {
+      background-color: var(--success-color);
+      border-color: var(--success-color);
+      &:hover {
+        background-color: var(--secondary-color);
+        border-color: var(--secondary-color);
+      }
+    }
+  }
+  
+  .custom-navbar {
+    margin: 0 5%;
+  }
