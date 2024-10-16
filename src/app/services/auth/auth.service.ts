@@ -21,6 +21,7 @@ export class AuthService {
       map(
         userData => {
           sessionStorage.setItem('username', userData.username);
+          sessionStorage.setItem('id', userData._id);
           sessionStorage.setItem('accessToken', userData.accessToken);
           return userData;          
         }
@@ -30,6 +31,10 @@ export class AuthService {
 
   getToken(): string | null {
     return sessionStorage.getItem('accessToken');
+  }
+
+  getUserID(): string | null{
+    return sessionStorage.getItem('id')
   }
 
   getUsername(): string | null {

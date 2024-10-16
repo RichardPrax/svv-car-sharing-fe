@@ -1,0 +1,20 @@
+<div class="car-card">
+    <div class="car-header">
+      <h3>{{ car.driver }}</h3>
+      <p>{{ car.departureFrom }} - {{ car.departureTime | date: 'shortTime' }}</p>
+    </div>
+  
+    <div class="car-body">
+      <h4>Mitfahrer:</h4>
+      <ul>
+        <li *ngFor="let user of car.registeredUsers">{{ user.username }}</li>
+      </ul>
+    </div>
+  
+    <div class="car-footer">
+      <button (click)="toggleRegistration()" [disabled]="isRegistered && car.registeredUsers.length >= car.numberOfSeats">
+        {{ isRegistered ? 'Abmelden' : 'Anmelden' }}
+      </button>
+    </div>
+  </div>
+  

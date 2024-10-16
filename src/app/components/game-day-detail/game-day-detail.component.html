@@ -1,0 +1,15 @@
+<app-header></app-header>
+<div class="container mt-4" *ngIf="gameDay">
+    <div class="d-flex justify-content-between align-items-center">
+        <h2>Spieltag am {{ gameDay.date | date: 'mediumDate'}} </h2>
+        <a [routerLink]="['/']" class="back-link">
+            &lt;-- Zurück zu allen Spieltagen
+        </a>
+    </div>
+    <p><strong>Ort:</strong> {{ gameDay.location }}</p>
+    <p><strong>Spielbeginn:</strong> {{ gameDay.startTime }}</p>
+
+    <button class="btn btn-primary" (click)="openCarOfferModal()">Fahrgemeinschaft anbieten</button>
+    <h3>Fahrgemeinschaften:</h3>
+    <app-car-card *ngFor="let car of gameDay.cars" [car]="car"></app-car-card>
+</div>
