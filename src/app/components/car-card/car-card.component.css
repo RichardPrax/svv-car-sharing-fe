@@ -1,0 +1,19 @@
+.car-card {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .car-header h5 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .car-footer {
+    padding-top: 1rem;
+  }
+  
+  .car-footer button {
+    width: 100%;
+    font-size: 1.1rem;
+  }
+  

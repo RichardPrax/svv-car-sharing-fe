@@ -1,20 +1,25 @@
-<div class="car-card">
-    <div class="car-header">
-      <h3>{{ car.driver }}</h3>
-      <p>{{ car.departureFrom }} - {{ car.departureTime | date: 'shortTime' }}</p>
-    </div>
-  
-    <div class="car-body">
-      <h4>Mitfahrer:</h4>
-      <ul>
-        <li *ngFor="let user of car.registeredUsers">{{ user.username }}</li>
-      </ul>
-    </div>
-  
-    <div class="car-footer">
-      <button (click)="toggleRegistration()" [disabled]="isRegistered && car.registeredUsers.length >= car.numberOfSeats">
-        {{ isRegistered ? 'Abmelden' : 'Anmelden' }}
-      </button>
-    </div>
+<div class="card car-card mb-4">
+  <div class="card-header">
+    <h5 class="card-title">Fahrer: {{ car.driver }}</h5>
+    <p class="card-text text-muted">Ort: {{ car.departureFrom }}</p>
+    <p class="card-text text-muted">Zeit: {{ car.departureTime | date: 'shortTime' }}</p>
   </div>
-  
+
+  <div class="card-body">
+    <h6 class="card-subtitle mb-3">Mitfahrer:</h6>
+    <ul class="list-group list-group-flush">
+      <li *ngFor="let user of car.registeredUsers" class="list-group-item">
+        {{ user.username }}
+      </li>
+    </ul>
+  </div>
+
+  <div class="card-footer text-center">
+    <button 
+      class="btn btn-primary"
+      (click)="toggleRegistration()" 
+      [disabled]="isRegistered && car.registeredUsers.length >= car.numberOfSeats">
+      {{ isRegistered ? 'Abmelden' : 'Anmelden' }}
+    </button>
+  </div>
+</div>
