@@ -18,7 +18,7 @@
     <button 
       class="btn btn-primary"
       (click)="toggleRegistration()" 
-      [disabled]="isRegistered && car.registeredUsers.length >= car.numberOfSeats">
+      [disabled]="car.registeredUsers.length >= car.numberOfSeats">
       {{ isRegistered ? 'Abmelden' : 'Anmelden' }}
     </button>
   </div>

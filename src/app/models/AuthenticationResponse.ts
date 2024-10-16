@@ -1,5 +1,5 @@
 export interface AuthenticationResponse {
-    _id: string,
+    id: string,
     username: string,
     accessToken: string
 }

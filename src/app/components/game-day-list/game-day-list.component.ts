@@ -22,7 +22,6 @@ export class GameDayListComponent implements OnInit {
   }
 
   viewDetails(id: string) {
-    console.log("test");
     this.router.navigate(['/game-day', id]);
   }
 }

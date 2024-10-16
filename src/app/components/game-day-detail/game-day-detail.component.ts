@@ -6,6 +6,7 @@ import { HeaderComponent } from '../header/header.component';
 import { CarCardComponent } from '../car-card/car-card.component';
 import { CarOfferFormComponent } from '../car-offer-form/car-offer-form.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CarService } from '../../services/car.service';
 
 @Component({
   selector: 'app-game-day-detail',
@@ -17,11 +18,13 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class GameDayDetailComponent implements OnInit {
   gameDay: any;
   gameDayId: string = '';
+  cars: any[] = []
 
   constructor(
     private route: ActivatedRoute,
     private gameDayService: GameDayService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private carService: CarService
   ) { }
 
   ngOnInit(): void {
@@ -29,7 +32,8 @@ export class GameDayDetailComponent implements OnInit {
     this.gameDayId = id!;
     
     this.gameDayService.getGameDayById(id!).subscribe((data: any) => {
-      this.gameDay = data.gameDay;
+    this.gameDay = data.gameDay;
+    this.carService.getCarsForGameDay(this.gameDayId).subscribe((cars:any) => this.cars = cars);
     });
   }
 

@@ -21,7 +21,7 @@ export class AuthService {
       map(
         userData => {
           sessionStorage.setItem('username', userData.username);
-          sessionStorage.setItem('id', userData._id);
+          sessionStorage.setItem('id', userData.id);
           sessionStorage.setItem('accessToken', userData.accessToken);
           return userData;          
         }

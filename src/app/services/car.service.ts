@@ -17,15 +17,23 @@ export class CarService {
     return this.http.post(`${this.apiUrl}/${carId}/deregister`, {});
   }
 
-offerCar(ownerId: string |null,username: string | null , departureTime: string, departureFrom: string, numberOfSeats: number, gameDayId: string): Observable<any> {
-  const carData = {
-    owner: ownerId,
-    numberOfSeats: numberOfSeats,
-    driver: username,
-    departureTime: departureTime,
-    departureFrom: departureFrom,
-    gameDay: gameDayId
-  };
-  return this.http.post(`${this.apiUrl}`, carData);
-}
+  getCarsForGameDay(gameDayId: string){
+    return this.http.get<any>(`${this.apiUrl}/gameday/${gameDayId}`);
+  }
+
+  getCarByID(carId: string){
+    return this.http.get<any>(`${this.apiUrl}/${carId}`);
+  }
+
+  offerCar(ownerId: string |null,username: string | null , departureTime: string, departureFrom: string, numberOfSeats: number, gameDayId: string): Observable<any> {
+    const carData = {
+      owner: ownerId,
+      numberOfSeats: numberOfSeats,
+      driver: username,
+      departureTime: departureTime,
+      departureFrom: departureFrom,
+      gameDay: gameDayId
+    };
+    return this.http.post(`${this.apiUrl}`, carData);
+  }
 }

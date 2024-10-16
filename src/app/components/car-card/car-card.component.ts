@@ -3,6 +3,7 @@ import { AuthService } from '../../services/auth/auth.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { CarService } from '../../services/car.service';
+import { timeout } from 'rxjs';
 
 @Component({
   selector: 'app-car-card',
@@ -12,8 +13,8 @@ import { CarService } from '../../services/car.service';
   styleUrl: './car-card.component.css'
 })
 export class CarCardComponent implements OnInit {
-  @Input() car: any; 
-  isRegistered = false;
+  @Input() car: any;
+  isRegistered:boolean = false;
 
   constructor(
     private carService: CarService,
@@ -23,7 +24,9 @@ export class CarCardComponent implements OnInit {
 
   ngOnInit(): void {
     const currentUserId = this.authService.getUserID();
-    this.isRegistered = this.car.registeredUsers.some((userId: string) => userId === currentUserId);
+    this.isRegistered = this.car.registeredUsers.some((user: any) => {
+      return user._id === currentUserId
+    });
   }
 
   toggleRegistration() {
@@ -36,13 +39,19 @@ export class CarCardComponent implements OnInit {
 
   register() {
     this.carService.registerForCar(this.car._id).subscribe(() => {
-      this.isRegistered = true;
+      this.carService.getCarByID(this.car._id).subscribe((car : any) => {
+        this.car = car;
+        this.ngOnInit();
+      });
     });
   }
 
   deregister() {
     this.carService.deregisterFromCar(this.car._id).subscribe(() => {
-      this.isRegistered = false;
+      this.carService.getCarByID(this.car._id).subscribe((car : any) => {
+        this.car = car;
+        this.ngOnInit();
+      });
     });
   }
 }

@@ -12,7 +12,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap'; // Importiere NgbAc
   styleUrls: ['./car-offer-form.component.css']
 })
 export class CarOfferFormComponent {
-  @Input() gameDayId: string = '';  // Spieltag-ID als Input
+  @Input() gameDayId: string = '';
 
   carForm: FormGroup;
 
@@ -20,7 +20,7 @@ export class CarOfferFormComponent {
     private fb: FormBuilder,
     private carService: CarService,
     private authService: AuthService,
-    public activeModal: NgbActiveModal // inject NgbActiveModal
+    public activeModal: NgbActiveModal
   ) {
     this.carForm = this.fb.group({
       departureTime: ['', Validators.required],
