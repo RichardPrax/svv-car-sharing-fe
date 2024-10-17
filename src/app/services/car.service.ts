@@ -36,4 +36,20 @@ export class CarService {
     };
     return this.http.post(`${this.apiUrl}`, carData);
   }
+
+  updateCar(carId: string, ownerId: string |null,username: string | null , departureTime: string, departureFrom: string, numberOfSeats: number, gameDayId: string): Observable<any> {
+    const carData = {
+      owner: ownerId,
+      numberOfSeats: numberOfSeats,
+      driver: username,
+      departureTime: departureTime,
+      departureFrom: departureFrom,
+      gameDay: gameDayId
+    };
+    return this.http.put(`${this.apiUrl}/${carId}`, carData);
+  }
+
+  deleteCar(carId: string): Observable<any>{
+    return this.http.delete(`${this.apiUrl}/${carId}`);
+  }
 }
