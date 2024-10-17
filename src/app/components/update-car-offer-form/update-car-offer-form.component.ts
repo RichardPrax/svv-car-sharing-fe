@@ -32,9 +32,8 @@ export class UpdateCarOfferFormComponent {
 
   ngOnInit(): void {
     if (this.car) {
-      console.log(this.car.departureTime)
       this.carForm.patchValue({
-        departureTime:this.car.departurTime,
+        departureTime:this.car.departureTime,
         departureFrom:this.car.departureFrom,
         numberOfSeats:this.car.numberOfSeats,
         info: this.car.info
