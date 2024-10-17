@@ -25,26 +25,28 @@ export class CarService {
     return this.http.get<any>(`${this.apiUrl}/${carId}`);
   }
 
-  offerCar(ownerId: string |null,username: string | null , departureTime: string, departureFrom: string, numberOfSeats: number, gameDayId: string): Observable<any> {
+  offerCar(ownerId: string |null,username: string | null , departureTime: string, departureFrom: string, numberOfSeats: number, gameDayId: string, info:string): Observable<any> {
     const carData = {
       owner: ownerId,
       numberOfSeats: numberOfSeats,
       driver: username,
       departureTime: departureTime,
       departureFrom: departureFrom,
-      gameDay: gameDayId
+      gameDay: gameDayId,
+      info: info
     };
     return this.http.post(`${this.apiUrl}`, carData);
   }
 
-  updateCar(carId: string, ownerId: string |null,username: string | null , departureTime: string, departureFrom: string, numberOfSeats: number, gameDayId: string): Observable<any> {
+  updateCar(carId: string, ownerId: string |null,username: string | null , departureTime: string, departureFrom: string, numberOfSeats: number, gameDayId: string, info: string): Observable<any> {
     const carData = {
       owner: ownerId,
       numberOfSeats: numberOfSeats,
       driver: username,
       departureTime: departureTime,
       departureFrom: departureFrom,
-      gameDay: gameDayId
+      gameDay: gameDayId,
+      info: info
     };
     return this.http.put(`${this.apiUrl}/${carId}`, carData);
   }

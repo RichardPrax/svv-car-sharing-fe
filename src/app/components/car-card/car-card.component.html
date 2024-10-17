@@ -2,8 +2,9 @@
   <div class="card-header">
     <h5 class="card-title">Fahrer: {{ car.driver }}</h5>
     <p class="card-text text-muted">Ort: {{ car.departureFrom }}</p>
-    <p class="card-text text-muted">Zeit: {{ car.departureTime | date: 'shortTime' }}</p>
+    <p class="card-text text-muted">Zeit: {{ car.departureTime }}</p>
     <p class="card-text text-muted">Verfügbare Plätze: {{ car.numberOfSeats }}</p>
+    <p class="card-text text-muted">Info: {{ car.info }}</p>
   </div>
 
   <div class="card-body">

@@ -2,7 +2,7 @@ import { Component, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CarService } from '../../services/car.service';
 import { AuthService } from '../../services/auth/auth.service';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap'; // Importiere NgbActiveModal
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-car-offer-form',
@@ -25,7 +25,8 @@ export class CarOfferFormComponent {
     this.carForm = this.fb.group({
       departureTime: ['', Validators.required],
       departureFrom: ['', Validators.required],
-      numberOfSeats: [1, [Validators.required, Validators.min(1)]]
+      numberOfSeats: [1, [Validators.required, Validators.min(1)]],
+      info: ['']
     });
   }
 
@@ -33,9 +34,9 @@ export class CarOfferFormComponent {
     if (this.carForm.valid) {
       const userId = this.authService.getUserID();
       const username = this.authService.getUsername();
-      const { departureTime, departureFrom, numberOfSeats } = this.carForm.value;
+      const { departureTime, departureFrom, numberOfSeats, info } = this.carForm.value;
       
-      this.carService.offerCar(userId, username, departureTime, departureFrom, numberOfSeats, this.gameDayId).subscribe({
+      this.carService.offerCar(userId, username, departureTime, departureFrom, numberOfSeats, this.gameDayId, info).subscribe({
         next: () => {
           this.activeModal.close('saved');
         },

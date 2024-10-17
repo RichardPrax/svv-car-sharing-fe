@@ -25,16 +25,19 @@ export class UpdateCarOfferFormComponent {
     this.carForm = this.fb.group({
       departureTime: ['', Validators.required],
       departureFrom: ['', Validators.required],
-      numberOfSeats: [1, [Validators.required, Validators.min(1)]]
+      numberOfSeats: [1, [Validators.required, Validators.min(1)]],
+      info: ['']
     });
   }
 
   ngOnInit(): void {
     if (this.car) {
+      console.log(this.car.departureTime)
       this.carForm.patchValue({
         departureTime:this.car.departurTime,
         departureFrom:this.car.departureFrom,
-        numberOfSeats:this.car.numberOfSeats
+        numberOfSeats:this.car.numberOfSeats,
+        info: this.car.info
       });
     }
   }
@@ -43,9 +46,9 @@ export class UpdateCarOfferFormComponent {
     if (this.carForm.valid) {
       const userId = this.authService.getUserID();
       const username = this.authService.getUsername();
-      const { departureTime, departureFrom, numberOfSeats } = this.carForm.value;
+      const { departureTime, departureFrom, numberOfSeats, info } = this.carForm.value;
       
-      this.carService.updateCar(this.car._id, userId, username, departureTime, departureFrom, numberOfSeats, this.car.gameDay._id).subscribe({
+      this.carService.updateCar(this.car._id, userId, username, departureTime, departureFrom, numberOfSeats, this.car.gameDay._id, info).subscribe({
         next: () => {
           this.activeModal.close('saved');
         },
