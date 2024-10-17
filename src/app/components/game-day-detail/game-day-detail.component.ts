@@ -32,9 +32,9 @@ export class GameDayDetailComponent implements OnInit {
     this.gameDayId = id!;
     
     this.gameDayService.getGameDayById(id!).subscribe((data: any) => {
-    this.gameDay = data.gameDay;
-    this.carService.getCarsForGameDay(this.gameDayId).subscribe((cars:any) => this.cars = cars);
+      this.gameDay = data.gameDay;
     });
+    this.carService.getCarsForGameDay(this.gameDayId).subscribe((cars:any) => this.cars = cars);
   }
 
   openCarOfferModal() {

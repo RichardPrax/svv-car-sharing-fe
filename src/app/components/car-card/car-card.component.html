@@ -3,7 +3,7 @@
     <h5 class="card-title">Fahrer: {{ car.driver }}</h5>
     <p class="card-text text-muted">Ort: {{ car.departureFrom }}</p>
     <p class="card-text text-muted">Zeit: {{ car.departureTime }}</p>
-    <p class="card-text text-muted">Verfügbare Plätze: {{ car.numberOfSeats }}</p>
+    <p class="card-text text-muted">Verfügbare Plätze: {{ availableSeats }}</p>
     <p class="card-text text-muted">Info: {{ car.info }}</p>
   </div>
 
@@ -33,9 +33,9 @@
     <button 
       class="btn btn-primary"
       (click)="toggleRegistration()" 
-      [disabled]="car.registeredUsers.length >= car.numberOfSeats"
+      [disabled]="isFull() && !isRegistered"
       *ngIf="!isDriver">
-      {{ isRegistered ? 'Abmelden' : 'Anmelden' }}
+      {{ isFull() ? 'Auto voll' : (isRegistered ? 'Abmelden' : 'Anmelden')}}
     </button>
   </div>
 </div>

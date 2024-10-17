@@ -12,7 +12,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let gameDay of gameDays" (click)="viewDetails(gameDay._id)" style="cursor: pointer;">
-            <td>{{ gameDay.location }}</td>
+            <td>{{ gameDay.city }}</td>
             <td>{{ gameDay.date | date: 'mediumDate' }}</td>
           <td>{{ gameDay.startTime }}</td>
           <td><i class="fas fa-chevron-right"></i></td>

@@ -1,10 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { booleanAttribute, Component, Input, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth/auth.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { CarService } from '../../services/car.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UpdateCarOfferFormComponent } from '../update-car-offer-form/update-car-offer-form.component';
+import { ResourceLoader } from '@angular/compiler';
 
 @Component({
   selector: 'app-car-card',
@@ -17,6 +18,7 @@ export class CarCardComponent implements OnInit {
   @Input() car: any;
   isRegistered:boolean = false;
   isDriver: boolean = false;
+  availableSeats:number = 0;
 
   constructor(
     private carService: CarService,
@@ -33,6 +35,7 @@ export class CarCardComponent implements OnInit {
 
     const userName = this.authService.getUsername();
     this.isDriver = this.car.driver === userName;
+    this.availableSeats = this.car.numberOfSeats-this.car.registeredUsers.length;
   }
 
   toggleRegistration() {
@@ -80,5 +83,7 @@ export class CarCardComponent implements OnInit {
     );
   }
   
-
+  isFull() : boolean{
+    return this.availableSeats===0;
+  }
 }
