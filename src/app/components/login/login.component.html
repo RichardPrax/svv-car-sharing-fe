@@ -23,6 +23,11 @@
       >
         Login
       </button>
+      <div *ngIf="errorMessages.length" class="text-danger mt-3">
+        <p *ngFor="let message of errorMessages" style="font-size: small">
+          {{ message }}
+        </p>
+      </div>
     </form>
   </div>
 </div>
